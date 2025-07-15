@@ -55,7 +55,7 @@ export function Footer() {
             </div>
             <p className="text-gray-300 mb-6 leading-relaxed">
               We create exceptional web experiences that drive business growth.
-              From concept to deployment, we're your partners in digital
+              From concept to deployment, we&apos;re your partners in digital
               success.
             </p>
             <div className="flex space-x-4">

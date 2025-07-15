@@ -100,7 +100,7 @@ export function Services() {
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             We offer comprehensive web development services to help your
             business thrive in the digital world. From concept to deployment,
-            we've got you covered.
+            we&apos;ve got you covered.
           </p>
         </motion.div>
 

@@ -79,7 +79,7 @@ export function Contact() {
             Get In Touch
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to start your next project? Let's discuss how we can help
+            Ready to start your next project? Let&apos;s discuss how we can help
             bring your vision to life with our web development expertise.
           </p>
         </motion.div>
@@ -96,8 +96,8 @@ export function Contact() {
               <CardHeader>
                 <CardTitle className="text-2xl">Send us a message</CardTitle>
                 <CardDescription>
-                  Fill out the form below and we'll get back to you within 24
-                  hours.
+                  Fill out the form below and we&apos;ll get back to you within
+                  24 hours.
                 </CardDescription>
               </CardHeader>
               <CardContent>
@@ -196,13 +196,13 @@ export function Contact() {
           >
             <div>
               <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Let's work together
+                Let&apos;s work together
               </h3>
               <p className="text-gray-600 text-lg leading-relaxed">
-                We're passionate about creating exceptional web experiences that
-                drive business growth. Whether you need a new website, web
+                We&apos;re passionate about creating exceptional web experiences
+                that drive business growth. Whether you need a new website, web
                 application, or want to improve your existing digital presence,
-                we're here to help.
+                we&apos;re here to help.
               </p>
             </div>
 
