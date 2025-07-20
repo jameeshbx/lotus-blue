@@ -47,10 +47,10 @@ export function Services() {
     },
     {
       icon: <Zap className="h-8 w-8" />,
-      title: "Performance Optimization",
+      title: "Hybrid App Development",
       description:
-        "Speed up your website with advanced optimization techniques and modern development practices.",
-      features: ["Core Web Vitals", "Caching", "CDN Setup"],
+        "Cross-platform mobile applications built with React Native, Flutter, and Ionic for maximum reach and efficiency.",
+      features: ["Cross Platform", "Native Performance", "Single Codebase"],
       color: "text-yellow-600",
     },
     {
