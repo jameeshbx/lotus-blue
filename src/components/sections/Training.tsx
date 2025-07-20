@@ -137,7 +137,7 @@ export function Training() {
                     </div>
                     <div className="space-y-2">
                       <p className="text-sm font-medium text-gray-700">
-                        What you'll learn:
+                        What you&apos;ll learn:
                       </p>
                       {course.features.map((feature, featureIndex) => (
                         <Badge
