@@ -1,133 +1,200 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ArrowRight, Code, Smartphone, Globe } from "lucide-react";
+import { Clock, ArrowRight, Diamond } from "lucide-react";
+import Image from "next/image";
 
 export function Hero() {
   return (
     <section
       id="home"
-      className="pt-24 pb-16 bg-gradient-to-br from-blue-50 to-indigo-100"
+      className="pt-24 pb-2 bg-black min-h-screen relative overflow-hidden"
+      style={{
+        backgroundImage: "url('/hero-bg.png')",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+      }}
     >
-      <div className="container mx-auto px-4">
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
+      {/* Background Grid Pattern */}
+      <div className="absolute inset-0 opacity-10">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.15) 1px, transparent 0)`,
+            backgroundSize: "40px 40px",
+          }}
+        ></div>
+      </div>
+
+      {/* Subtle Lotus Background */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-5">
+        <div className="w-96 h-96 border-2 border-blue-500 rounded-full"></div>
+      </div>
+
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          {/* Hero Section */}
+          <div className="text-center mb-20 mt-10">
+            {/* Welcome Message */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="inline-flex items-center space-x-2 bg-gray-800/50 backdrop-blur-sm border border-gray-700 rounded-full px-4 py-2 mb-8"
+            >
+              <Clock className="w-4 h-4 text-blue-400" />
+              <span className="text-gray-300 text-sm">
+                Welcome to the Future
+              </span>
+            </motion.div>
+
+            {/* Main Headline */}
+            <motion.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2, duration: 0.8 }}
+              className="text-5xl lg:text-7xl font-bold text-white leading-tight mb-6"
+            >
+              <span className="absolute top-5 left-25">
+                <Image
+                  src="/vector.png"
+                  alt="vector"
+                  width={150}
+                  height={150}
+                />
+              </span>
+              We Build Digital Products
+              <br />
+              <span className="relative">
+                And Future Developers
+                <div className="absolute -right-20 top-1/2 transform -translate-y-1/2 w-16 h-px bg-gray-600"></div>
+              </span>
+            </motion.h1>
+
+            {/* Sub-headline */}
+            <motion.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4, duration: 0.8 }}
+              className="text-xl text-gray-400 max-w-3xl mx-auto leading-relaxed"
+            >
+              Custom web solutions for businesses. Real-world tech courses for
+              the next generation of creators.
+            </motion.p>
+          </div>
+
+          {/* Main Content Section */}
+          <div className="grid lg:grid-cols-3 gap-12 items-center">
+            {/* Left Content - Custom Tech Solutions */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="space-y-8"
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="space-y-6 z-10"
             >
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2, duration: 0.8 }}
-                className="space-y-4"
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+                CUSTOM TECH SOLUTIONS
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                Tailored platforms and applications built from scratch.
+              </p>
+              <a
+                href="#contact"
+                className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors"
               >
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight">
-                  We Build
-                  <span className="text-blue-600 block">Digital Dreams</span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Transform your business with cutting-edge web solutions. We
-                  create stunning, modern websites and applications that drive
-                  growth and deliver exceptional user experiences.
-                </p>
-              </motion.div>
+                Let's Build Together →
+              </a>
 
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.4, duration: 0.8 }}
-                className="flex flex-col sm:flex-row gap-4"
-              >
-                <Button
-                  size="lg"
-                  className="bg-blue-600 hover:bg-blue-700 text-lg px-8 py-6"
-                >
-                  Start Your Project
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="text-lg px-8 py-6"
-                >
-                  View Our Work
-                </Button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="flex items-center space-x-8 text-sm text-gray-600"
-              >
-                <div className="flex items-center space-x-2">
-                  <Code className="h-5 w-5 text-blue-600" />
-                  <span>Modern Tech Stack</span>
+              {/* Features */}
+              <div className="space-y-4 mt-8">
+                <div className="flex items-start space-x-3">
+                  <Diamond className="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <div className="text-white font-semibold">50+</div>
+                    <div className="text-gray-400 text-sm">
+                      Projects Delivered
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Smartphone className="h-5 w-5 text-blue-600" />
-                  <span>Responsive Design</span>
+                <div className="flex items-start space-x-3">
+                  <Diamond className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <div className="text-white font-semibold">Custom-First</div>
+                    <div className="text-gray-400 text-sm">
+                      We craft digital tools that solve business problems.
+                    </div>
+                  </div>
                 </div>
-                <div className="flex items-center space-x-2">
-                  <Globe className="h-5 w-5 text-blue-600" />
-                  <span>Global Reach</span>
-                </div>
-              </motion.div>
+              </div>
             </motion.div>
 
-            {/* Right Content - Animated Illustration */}
+            {/* Center - Animated Sphere */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.8, duration: 1 }}
+              className="flex justify-center items-center w-full h-full relative"
+            >
+              <div className="relative w-[180%] aspect-square -mx-[40%]">
+                {/* Animated Sphere */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                  className="w-full h-full"
+                >
+                  <Image
+                    src="/hero-img.png"
+                    alt="Hero"
+                    fill
+                    className="rounded-full object-cover"
+                  />
+                </motion.div>
+              </div>
+            </motion.div>
+
+            {/* Right Content - Upskill with the Team */}
             <motion.div
               initial={{ opacity: 0, x: 50 }}
               animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.8 }}
-              className="relative"
+              transition={{ delay: 0.6, duration: 0.8 }}
+              className="space-y-6 z-10"
             >
-              <div className="relative h-96 lg:h-[500px] bg-gradient-to-br from-blue-400 to-indigo-600 rounded-2xl p-8">
-                <motion.div
-                  animate={{ y: [-10, 10, -10] }}
-                  transition={{
-                    duration: 3,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute top-8 left-8 w-16 h-16 bg-white rounded-lg shadow-lg flex items-center justify-center"
-                >
-                  <Code className="h-8 w-8 text-blue-600" />
-                </motion.div>
+              <h2 className="text-3xl lg:text-4xl font-bold text-blue-400 mb-4">
+                UPSKILL WITH THE TEAM
+              </h2>
+              <p className="text-gray-400 text-lg leading-relaxed">
+                Courses on MERN Stack, QA Testing, and UI/UX Design.
+              </p>
+              <a
+                href="#learnings"
+                className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors"
+              >
+                Ready to Upskill? →
+              </a>
 
-                <motion.div
-                  animate={{ y: [10, -10, 10] }}
-                  transition={{
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute top-20 right-12 w-12 h-12 bg-white rounded-lg shadow-lg flex items-center justify-center"
-                >
-                  <Smartphone className="h-6 w-6 text-blue-600" />
-                </motion.div>
-
-                <motion.div
-                  animate={{ y: [-5, 15, -5] }}
-                  transition={{
-                    duration: 3.5,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                  className="absolute bottom-20 left-12 w-14 h-14 bg-white rounded-lg shadow-lg flex items-center justify-center"
-                >
-                  <Globe className="h-7 w-7 text-blue-600" />
-                </motion.div>
-
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-white text-center">
-                    <div className="text-4xl font-bold mb-2">Lotus Blue</div>
-                    <div className="text-lg opacity-90">Web Development</div>
+              {/* Features */}
+              <div className="space-y-4 mt-8">
+                <div className="flex items-start space-x-3">
+                  <Diamond className="w-5 h-5 text-purple-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <div className="text-white font-semibold">90%</div>
+                    <div className="text-gray-400 text-sm">
+                      Project-Based Learning. No fluff - just real assignments
+                    </div>
+                  </div>
+                </div>
+                <div className="flex items-start space-x-3">
+                  <Diamond className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
+                  <div>
+                    <div className="text-white font-semibold">Job Oriented</div>
+                    <div className="text-gray-400 text-sm">
+                      Resume support, portfolio projects - built into every
+                      course.
+                    </div>
                   </div>
                 </div>
               </div>

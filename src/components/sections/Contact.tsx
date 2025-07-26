@@ -2,31 +2,58 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Separator } from "@/components/ui/separator";
-import { Mail, Phone, MapPin, Clock, Send } from "lucide-react";
 
 export function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
-    company: "",
-    message: "",
+    phone: "",
+    description: "",
+    serviceLookingFor: "upskill",
+    serviceNeeded: "custom-web-development",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission here
-    console.log("Form submitted:", formData);
+    setIsSubmitting(true);
+    setSubmitStatus("idle");
+
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          description: "",
+          serviceLookingFor: "upskill",
+          serviceNeeded: "custom-web-development",
+        });
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (
@@ -38,36 +65,22 @@ export function Contact() {
     });
   };
 
-  const contactInfo = [
-    {
-      icon: <Mail className="h-6 w-6" />,
-      title: "Email",
-      description: "hello@lotusblue.dev",
-      color: "text-blue-600",
-    },
-    {
-      icon: <Phone className="h-6 w-6" />,
-      title: "Phone",
-      description: "+1 (555) 123-4567",
-      color: "text-green-600",
-    },
-    {
-      icon: <MapPin className="h-6 w-6" />,
-      title: "Location",
-      description: "San Francisco, CA",
-      color: "text-purple-600",
-    },
-    {
-      icon: <Clock className="h-6 w-6" />,
-      title: "Business Hours",
-      description: "Mon-Fri: 9AM-6PM PST",
-      color: "text-orange-600",
-    },
-  ];
+  const handleRadioChange = (name: string, value: string) => {
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
 
   return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section
+      id="contact"
+      className="py-20"
+      style={{
+        background: "linear-gradient(to bottom, black 70%,  #1E2939 30%)",
+      }}
+    >
+      <div className="container mx-auto px-4 bg-blue-400 rounded-lg p-16 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -75,176 +88,237 @@ export function Contact() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Get In Touch
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Got an Idea? Let&apos;s Build It Together.
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Ready to start your next project? Let&apos;s discuss how we can help
-            bring your vision to life with our web development expertise.
+          <p className="text-xl text-white max-w-3xl mx-auto">
+            Whether you&apos;re planning your next startup, improving an
+            existing product, need an expert team, or want to level up,
+            we&apos;re ready.
           </p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-          >
-            <Card className="border-0 shadow-lg">
-              <CardHeader>
-                <CardTitle className="text-2xl">Send us a message</CardTitle>
-                <CardDescription>
-                  Fill out the form below and we&apos;ll get back to you within
-                  24 hours.
-                </CardDescription>
-              </CardHeader>
-              <CardContent>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid md:grid-cols-2 gap-4">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Name *
-                      </label>
-                      <Input
-                        id="name"
-                        name="name"
-                        type="text"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="Your name"
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="max-w-4xl mx-auto"
+        >
+          <form onSubmit={handleSubmit} className="space-y-8">
+            <div className="grid lg:grid-cols-2 gap-8">
+              {/* Left Column */}
+              <div className="space-y-6">
+                {/* Name Input */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                    Hello, what&apos;s your name?
+                  </label>
+                  <Input
+                    name="name"
+                    type="text"
+                    required
+                    value={formData.name}
+                    onChange={handleChange}
+                    placeholder="Enter your name"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                  />
+                </div>
+
+                {/* Email Input */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                    What is your email?
+                  </label>
+                  <Input
+                    name="email"
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="name@example.com"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                  />
+                </div>
+
+                {/* Description Textarea */}
+                <div>
+                  <Textarea
+                    name="description"
+                    required
+                    value={formData.description}
+                    onChange={handleChange}
+                    placeholder="Enter the description"
+                    rows={4}
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg resize-none"
+                  />
+                </div>
+              </div>
+
+              {/* Right Column */}
+              <div className="space-y-6">
+                {/* Service Looking For */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3 uppercase">
+                    Service you are looking for?
+                  </label>
+                  <div className="flex gap-4">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceLookingFor"
+                        value="project-development"
+                        checked={
+                          formData.serviceLookingFor === "project-development"
+                        }
+                        onChange={(e) =>
+                          handleRadioChange("serviceLookingFor", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-700 mb-2"
-                      >
-                        Email *
-                      </label>
-                      <Input
-                        id="email"
-                        name="email"
-                        type="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="your@email.com"
+                      <span className="text-white">Project development</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceLookingFor"
+                        value="upskill"
+                        checked={formData.serviceLookingFor === "upskill"}
+                        onChange={(e) =>
+                          handleRadioChange("serviceLookingFor", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label
-                      htmlFor="company"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Company
+                      <span className="text-white">Upskill with us.</span>
                     </label>
-                    <Input
-                      id="company"
-                      name="company"
-                      type="text"
-                      value={formData.company}
-                      onChange={handleChange}
-                      placeholder="Your company (optional)"
-                    />
                   </div>
+                </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-700 mb-2"
-                    >
-                      Message *
+                {/* Phone Number */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                    What&apos;s your number?
+                  </label>
+                  <Input
+                    name="phone"
+                    type="tel"
+                    required
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="+00 123456789"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                  />
+                </div>
+
+                {/* Service Needed */}
+                <div>
+                  <label className="block text-sm font-medium text-white mb-3 uppercase">
+                    What service do you need?
+                  </label>
+                  <div className="space-y-3">
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceNeeded"
+                        value="custom-web-development"
+                        checked={
+                          formData.serviceNeeded === "custom-web-development"
+                        }
+                        onChange={(e) =>
+                          handleRadioChange("serviceNeeded", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
+                      />
+                      <span className="text-white">Custom Web Development</span>
                     </label>
-                    <Textarea
-                      id="message"
-                      name="message"
-                      required
-                      value={formData.message}
-                      onChange={handleChange}
-                      placeholder="Tell us about your project..."
-                      rows={5}
-                    />
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceNeeded"
+                        value="qa-testing"
+                        checked={formData.serviceNeeded === "qa-testing"}
+                        onChange={(e) =>
+                          handleRadioChange("serviceNeeded", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
+                      />
+                      <span className="text-white">Hybrid App Development</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceNeeded"
+                        value="qa-testing"
+                        checked={formData.serviceNeeded === "qa-testing"}
+                        onChange={(e) =>
+                          handleRadioChange("serviceNeeded", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
+                      />
+                      <span className="text-white">QA Testing</span>
+                    </label>
+                    <label className="flex items-center space-x-2 cursor-pointer">
+                      <input
+                        type="radio"
+                        name="serviceNeeded"
+                        value="ui-ux-designing"
+                        checked={formData.serviceNeeded === "ui-ux-designing"}
+                        onChange={(e) =>
+                          handleRadioChange("serviceNeeded", e.target.value)
+                        }
+                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
+                      />
+                      <span className="text-white">UI UX Designing</span>
+                    </label>
                   </div>
-
-                  <Button
-                    type="submit"
-                    className="w-full bg-blue-600 hover:bg-blue-700"
-                  >
-                    <Send className="h-4 w-4 mr-2" />
-                    Send Message
-                  </Button>
-                </form>
-              </CardContent>
-            </Card>
-          </motion.div>
-
-          {/* Contact Information */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            viewport={{ once: true }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Let&apos;s work together
-              </h3>
-              <p className="text-gray-600 text-lg leading-relaxed">
-                We&apos;re passionate about creating exceptional web experiences
-                that drive business growth. Whether you need a new website, web
-                application, or want to improve your existing digital presence,
-                we&apos;re here to help.
-              </p>
+                </div>
+              </div>
             </div>
 
-            <Separator />
-
-            <div className="space-y-6">
-              {contactInfo.map((info, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1, duration: 0.5 }}
-                  viewport={{ once: true }}
-                  className="flex items-start space-x-4"
-                >
-                  <div className={`${info.color} mt-1`}>{info.icon}</div>
-                  <div>
-                    <h4 className="font-semibold text-gray-900">
-                      {info.title}
-                    </h4>
-                    <p className="text-gray-600">{info.description}</p>
-                  </div>
-                </motion.div>
-              ))}
+            {/* Submit Button */}
+            <div className="text-center">
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="bg-black text-white hover:bg-gray-800 px-8 py-3 rounded-lg font-medium uppercase"
+              >
+                {isSubmitting ? "Sending..." : "Let's Talk"}
+              </Button>
             </div>
 
-            <Separator />
+            {/* Status Messages */}
+            {submitStatus === "success" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center text-green-400"
+              >
+                Thank you! Your message has been sent successfully.
+              </motion.div>
+            )}
 
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h4 className="font-semibold text-gray-900 mb-2">
-                Why choose us?
-              </h4>
-              <ul className="space-y-2 text-gray-600">
-                <li>• Modern tech stack and best practices</li>
-                <li>• Responsive design for all devices</li>
-                <li>• SEO optimization and performance</li>
-                <li>• Ongoing support and maintenance</li>
-                <li>• Transparent communication</li>
-              </ul>
+            {submitStatus === "error" && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-center text-red-400"
+              >
+                Sorry, there was an error sending your message. Please try
+                again.
+              </motion.div>
+            )}
+
+            {/* Schedule Meeting Link */}
+            <div className="text-center">
+              <a
+                href="#"
+                className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center"
+              >
+                → I want to schedule a meeting
+              </a>
             </div>
-          </motion.div>
-        </div>
+          </form>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,67 +1,48 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Code, Smartphone, Database, Globe } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Code, Bug, Monitor, Smartphone } from "lucide-react";
 
 export function Training() {
   const courses = [
     {
-      icon: <Code className="h-8 w-8" />,
-      title: "Fullstack Web Development with Next.js",
+      number: "01",
+      icon: <Code className="h-6 w-6" />,
+      title: "MERN Stack",
       description:
-        "Master modern fullstack development using Next.js, React, and TypeScript. Learn server-side rendering, API routes, and deployment strategies.",
-      features: [
-        "Next.js 14",
-        "React & TypeScript",
-        "Server Components",
-        "API Routes",
-      ],
-      color: "text-blue-600",
-      duration: "8 weeks",
-      level: "Intermediate",
+        "Master the most in-demand full-stack technologies with our MERN program. From creating APIs to deploying responsive web apps, you'll gain end-to-end development experience.",
+      duration: "8 weeks | Full-Stack Projects",
+      nextBatch: "Next Batch: Aug 5",
     },
     {
-      icon: <Globe className="h-8 w-8" />,
-      title: "Vue.js Fullstack Development",
+      number: "02",
+      icon: <Smartphone className="h-6 w-6" />,
+      title: "Hybrid App Development",
       description:
-        "Build modern web applications with Vue.js ecosystem. Learn Vue 3, Composition API, Pinia state management, and Nuxt.js.",
-      features: ["Vue 3", "Composition API", "Pinia", "Nuxt.js"],
-      color: "text-green-600",
-      duration: "6 weeks",
-      level: "Intermediate",
+        "Build cross-platform mobile applications using React Native and Flutter. Learn to create native-like apps that work seamlessly on both iOS and Android platforms.",
+      duration: "10 weeks | React Native + Flutter",
+      nextBatch: "Next Batch: Aug 5",
     },
     {
-      icon: <Database className="h-8 w-8" />,
-      title: "Flask API Development",
+      number: "03",
+      icon: <Bug className="h-6 w-6" />,
+      title: "QA",
+      subtitle: "(Manual + Automation)",
       description:
-        "Create robust REST APIs and backend services using Python Flask. Learn database integration, authentication, and API design patterns.",
-      features: ["Python Flask", "REST APIs", "SQLAlchemy", "JWT Auth"],
-      color: "text-orange-600",
-      duration: "4 weeks",
-      level: "Beginner",
+        "Build a strong foundation in software testing with hands-on practice in both manual and automation testing, bug tracking, and test management tools.",
+      duration: "6 weeks | Selenium + Manual",
+      nextBatch: "Next Batch: Aug 12",
     },
     {
-      icon: <Smartphone className="h-8 w-8" />,
-      title: "Hybrid Mobile App Development with Ionic",
+      number: "04",
+      icon: <Monitor className="h-6 w-6" />,
+      title: "UI/UX Design",
       description:
-        "Build cross-platform mobile applications using Ionic Framework. Learn to create native-like apps for iOS and Android with web technologies.",
-      features: [
-        "Ionic Framework",
-        "Angular/React",
-        "Capacitor",
-        "Native APIs",
-      ],
-      color: "text-purple-600",
-      duration: "6 weeks",
-      level: "Intermediate",
+        "Learn the complete UI/UX design process—from user research to interactive prototyping. Get hands-on with Figma and create projects that stand out.",
+      duration: "5 weeks | Figma + UX Research",
+      nextBatch: "Next Batch: Aug 19",
     },
   ];
 
@@ -87,8 +68,12 @@ export function Training() {
   };
 
   return (
-    <section id="training" className="py-20 bg-gray-50">
-      <div className="container mx-auto px-4">
+    <section id="training" className="py-20 bg-black relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute top-0 left-0 w-64 h-64 bg-gradient-to-br from-blue-500/20 to-purple-500/20 rounded-full blur-3xl"></div>
+      <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-bl from-purple-500/20 to-blue-500/20 rounded-full blur-3xl"></div>
+
+      <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -96,13 +81,11 @@ export function Training() {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Courses Offered
+          <h2 className="text-4xl font-bold text-white mb-4">
+            Training Programs
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Master modern web and mobile development with our comprehensive
-            training programs. Learn from industry experts and build real-world
-            projects.
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            Master in-demand skills with our comprehensive training programs
           </p>
         </motion.div>
 
@@ -111,44 +94,57 @@ export function Training() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid md:grid-cols-2 gap-8"
+          className="grid md:grid-cols-4 gap-8"
         >
           {courses.map((course, index) => (
             <motion.div key={index} variants={cardVariants}>
-              <Card className="h-full hover:shadow-lg transition-shadow duration-300 border-0 shadow-md bg-white">
-                <CardHeader>
-                  <div className={`${course.color} mb-4`}>{course.icon}</div>
-                  <CardTitle className="text-xl">{course.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
+              <Card className="h-full bg-gray-800 border-gray-700 hover:bg-gray-750 transition-all duration-300 shadow-lg">
+                <CardContent className="p-6 flex flex-col h-full">
+                  {/* Header with icon, number, title, and arrow */}
+                  <div className="flex items-center justify-between mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="text-white">{course.icon}</div>
+                      <div>
+                        <div className="flex items-center gap-2">
+                          <span className="text-blue-400 font-semibold text-lg">
+                            {course.number}
+                          </span>
+                          <h3 className="text-white font-bold text-lg">
+                            {course.title}
+                          </h3>
+                        </div>
+                        {course.subtitle && (
+                          <p className="text-gray-400 text-sm mt-1">
+                            {course.subtitle}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                    <div className="text-white">
+                      <ArrowRight className="h-5 w-5" />
+                    </div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-gray-300 text-sm mb-6 leading-relaxed">
                     {course.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex gap-4 text-sm text-gray-500">
-                      <span className="flex items-center gap-1">
-                        <span className="font-medium">Duration:</span>{" "}
-                        {course.duration}
-                      </span>
-                      <span className="flex items-center gap-1">
-                        <span className="font-medium">Level:</span>{" "}
-                        {course.level}
-                      </span>
-                    </div>
-                    <div className="space-y-2">
-                      <p className="text-sm font-medium text-gray-700">
-                        What you&apos;ll learn:
-                      </p>
-                      {course.features.map((feature, featureIndex) => (
-                        <Badge
-                          key={featureIndex}
-                          variant="secondary"
-                          className="mr-2 mb-2"
-                        >
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
+                  </p>
+
+                  {/* Duration and next batch */}
+                  <div className="space-y-2 mb-6">
+                    <p className="text-gray-300 text-sm font-medium">
+                      {course.duration}
+                    </p>
+                    <p className="text-gray-300 text-sm font-medium">
+                      {course.nextBatch}
+                    </p>
+                  </div>
+
+                  {/* Request Admission button - pushed to bottom */}
+                  <div className="mt-auto">
+                    <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition-colors duration-200">
+                      Request Admission
+                    </Button>
                   </div>
                 </CardContent>
               </Card>

@@ -1,78 +1,28 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, Github } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { FileText } from "lucide-react";
 
 export function Portfolio() {
   const projects = [
     {
-      title: "E-commerce Platform",
+      title: "Expay",
       description:
-        "A modern e-commerce platform built with Next.js, featuring advanced product management, payment processing, and analytics dashboard.",
-      image: "/api/placeholder/400/300",
-      technologies: ["Next.js", "TypeScript", "Stripe", "Tailwind CSS"],
-      category: "E-commerce",
-      liveUrl: "#",
-      githubUrl: "#",
+        "From Students To Startups, See How Expay Simplifies Cross-Border Payments And Makes Global Money Movement Seamless.",
+      image: "/expay.png",
     },
     {
-      title: "Corporate Website",
+      title: "Elneera",
       description:
-        "A professional corporate website with modern design, CMS integration, and SEO optimization for better search engine visibility.",
-      image: "/api/placeholder/400/300",
-      technologies: ["React", "Contentful", "Framer Motion", "Vercel"],
-      category: "Corporate",
-      liveUrl: "#",
-      githubUrl: "#",
+        "Smart Tools for Smarter Agencies — Manage Itineraries, Bookings, and DMC Communications with Ease.",
+      image: "/elneera.png",
     },
     {
-      title: "SaaS Dashboard",
+      title: "BuyEx - Fintech",
       description:
-        "A comprehensive SaaS dashboard with real-time analytics, user management, and subscription handling capabilities.",
-      image: "/api/placeholder/400/300",
-      technologies: ["React", "Node.js", "PostgreSQL", "Chart.js"],
-      category: "SaaS",
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Mobile App Website",
-      description:
-        "A landing page for a mobile app with modern animations, download tracking, and user testimonials.",
-      image: "/api/placeholder/400/300",
-      technologies: ["Next.js", "Framer Motion", "Airtable", "Vercel"],
-      category: "Mobile",
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Restaurant Website",
-      description:
-        "A beautiful restaurant website with online ordering, menu management, and reservation system integration.",
-      image: "/api/placeholder/400/300",
-      technologies: ["React", "Firebase", "Stripe", "Google Maps"],
-      category: "Restaurant",
-      liveUrl: "#",
-      githubUrl: "#",
-    },
-    {
-      title: "Portfolio Website",
-      description:
-        "A creative portfolio website for a photographer with image galleries, booking system, and client testimonials.",
-      image: "/api/placeholder/400/300",
-      technologies: ["Next.js", "Cloudinary", "Sanity CMS", "Vercel"],
-      category: "Portfolio",
-      liveUrl: "#",
-      githubUrl: "#",
+        "We Handle The Forex Heavy Lifting, While You Deliver Exceptional Study Abroad Solutions.",
+      image: "/buyex.png",
     },
   ];
 
@@ -98,23 +48,29 @@ export function Portfolio() {
   };
 
   return (
-    <section id="portfolio" className="py-20 bg-gray-50">
+    <section id="portfolio" className="py-16 bg-gray-900 relative">
       <div className="container mx-auto px-4">
-        <motion.div
+        {/* Absolutely positioned h2 on top of second project */}
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="absolute text-4xl font-bold text-white mb-2 left-1/2 top-8 z-10"
         >
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">
-            Our Portfolio
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Explore our latest projects and see how we&apos;ve helped businesses
-            transform their digital presence with cutting-edge web solutions.
-          </p>
-        </motion.div>
+          Some of the Things We've Built
+        </motion.h2>
+
+        {/* Absolutely positioned p on top of third project */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          viewport={{ once: true }}
+          className="absolute text-lg text-gray-300 right-38 lg:right-128 top-24 z-10"
+        >
+          Portfolio Section
+        </motion.p>
 
         <motion.div
           variants={containerVariants}
@@ -125,75 +81,59 @@ export function Portfolio() {
         >
           {projects.map((project, index) => (
             <motion.div key={index} variants={cardVariants}>
-              <Card className="h-full hover:shadow-xl transition-all duration-300 border-0 shadow-md overflow-hidden group">
-                <div className="relative overflow-hidden">
-                  <div className="w-full h-48 bg-gradient-to-br from-blue-400 to-indigo-600 flex items-center justify-center">
-                    <div className="text-white text-center">
-                      <div className="text-2xl font-bold mb-2">
-                        {project.title}
-                      </div>
-                      <div className="text-sm opacity-90">
-                        {project.category}
-                      </div>
-                    </div>
-                  </div>
-                  <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center space-x-4">
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      className="bg-white text-gray-900 hover:bg-gray-100"
-                    >
-                      <ExternalLink className="h-4 w-4 mr-2" />
-                      Live Demo
-                    </Button>
-                    <Button
-                      size="sm"
-                      variant="secondary"
-                      className="bg-white text-gray-900 hover:bg-gray-100"
-                    >
-                      <Github className="h-4 w-4 mr-2" />
-                      Code
-                    </Button>
-                  </div>
-                </div>
+              <div
+                className={`space-y-4 ${
+                  index === 0 ? "mt-0" : index === 1 ? "mt-16" : "mt-32"
+                }`}
+              >
+                {/* Screenshot Card */}
+                <Card className="bg-white border-0 shadow-lg overflow-hidden">
+                  <CardContent className="p-0">
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full h-auto object-cover"
+                    />
+                  </CardContent>
+                </Card>
 
-                <CardHeader>
-                  <CardTitle className="text-xl">{project.title}</CardTitle>
-                  <CardDescription className="text-gray-600">
-                    {project.description}
-                  </CardDescription>
-                </CardHeader>
-
-                <CardContent>
-                  <div className="space-y-4">
-                    <div className="flex flex-wrap gap-2">
-                      {project.technologies.map((tech, techIndex) => (
-                        <Badge
-                          key={techIndex}
-                          variant="outline"
-                          className="text-xs"
-                        >
-                          {tech}
-                        </Badge>
-                      ))}
+                {/* Project Info */}
+                <motion.div
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.6, delay: 0.3 }}
+                  viewport={{ once: true }}
+                  className="flex items-start space-x-3"
+                >
+                  <motion.div
+                    initial={{ scale: 0, rotate: -180 }}
+                    whileInView={{ scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.5, delay: 0.4 }}
+                    viewport={{ once: true }}
+                    className="flex-shrink-0"
+                  >
+                    <div className="w-8 h-8 bg-white rounded border border-gray-300 flex items-center justify-center">
+                      <FileText className="w-4 h-4 text-gray-700" />
                     </div>
-                  </div>
-                </CardContent>
-              </Card>
+                  </motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: 0.5 }}
+                    viewport={{ once: true }}
+                    className="flex-1"
+                  >
+                    <h3 className="text-xl font-semibold text-white mb-2">
+                      {project.title}
+                    </h3>
+                    <p className="text-gray-300 leading-relaxed">
+                      {project.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              </div>
             </motion.div>
           ))}
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5, duration: 0.8 }}
-          viewport={{ once: true }}
-          className="text-center mt-12"
-        >
-          <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-            View All Projects
-          </Button>
         </motion.div>
       </div>
     </section>
