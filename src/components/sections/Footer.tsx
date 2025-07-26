@@ -1,12 +1,11 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Separator } from "@/components/ui/separator";
 import { Twitter, Facebook, Instagram } from "lucide-react";
 import Image from "next/image";
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
+  //const currentYear = new Date().getFullYear();
 
   const navigationLinks = [
     { name: "About Us", href: "#" },

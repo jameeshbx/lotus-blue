@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Card, CardContent } from "@/components/ui/card";
 import { FileText } from "lucide-react";
+import Image from "next/image";
 
 export function Portfolio() {
   const projects = [
@@ -58,7 +59,7 @@ export function Portfolio() {
           viewport={{ once: true }}
           className="absolute text-4xl font-bold text-white mb-2 left-1/2 top-8 z-10"
         >
-          Some of the Things We've Built
+          Some of the Things We&apos;ve Built
         </motion.h2>
 
         {/* Absolutely positioned p on top of third project */}
@@ -89,7 +90,7 @@ export function Portfolio() {
                 {/* Screenshot Card */}
                 <Card className="bg-white border-0 shadow-lg overflow-hidden">
                   <CardContent className="p-0">
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
                       className="w-full h-auto object-cover"

@@ -103,11 +103,11 @@ export function Services() {
             className="inline-block align-top max-w-2xl"
           >
             <h3 className="text-white font-bold text-lg mb-2">
-              More Than Developers. We're Your Tech Partners.
+              More Than Developers. We&apos;re Your Tech Partners.
             </h3>
             <p className="text-gray-300 text-base">
               Lotus is a modern development team delivering smart digital
-              solutions that help businesses grow. We don't offer
+              solutions that help businesses grow. We don&apos;t offer
               one-size-fits-all websites—we engineer custom tools, platforms,
               and products, exactly how you need them.
             </p>

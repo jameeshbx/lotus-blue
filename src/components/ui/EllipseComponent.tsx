@@ -1,3 +1,4 @@
+import Image from "next/image";
 import React from "react";
 
 const EllipseComponent: React.FC = () => {
@@ -26,7 +27,7 @@ const EllipseComponent: React.FC = () => {
               zIndex: -1,
             }}
           ></div>
-          <img
+          <Image
             src="ellipse.png"
             alt="Ellipse"
             className="w-[500px] h-[500px] object-cover rounded-full"

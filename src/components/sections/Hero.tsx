@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Clock, ArrowRight, Diamond } from "lucide-react";
+import { Clock, Diamond } from "lucide-react";
 import Image from "next/image";
 
 export function Hero() {
@@ -102,7 +102,7 @@ export function Hero() {
                 href="#contact"
                 className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors"
               >
-                Let's Build Together →
+                Let&apos;s Build Together →
               </a>
 
               {/* Features */}
