@@ -93,6 +93,8 @@ export function Portfolio() {
                     <Image
                       src={project.image}
                       alt={project.title}
+                      width={1000}
+                      height={1000}
                       className="w-full h-auto object-cover"
                     />
                   </CardContent>

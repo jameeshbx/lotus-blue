@@ -267,7 +267,7 @@ export function Services() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="relative flex flex-col lg:flex-row items-start gap-12 z-10"
+          className="relative flex flex-col lg:flex-row items-start gap-12 z-10 "
         >
           {/* Left: Text Content */}
           <motion.div
@@ -403,6 +403,7 @@ export function Services() {
             </motion.div>
           </motion.div>
           {/* Right: 3D Sphere Image with Gradient Overlay */}
+
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -410,18 +411,25 @@ export function Services() {
             viewport={{ once: true }}
             className="flex-1 flex items-center justify-center relative min-h-[340px]"
           >
-            <div className="relative inset-0 w-full max-w-md aspect-square bg-gradient-to-b from-blue-500 via-blue-500/90 to-blue-950 rounded-full">
-              {/* Main image with blend mode */}
+            <Image
+              src="/ellipse-outer.png"
+              alt="3D Sphere"
+              fill
+              className="object-cover bg-"
+            />
+            <div className="relative inset-0 p-16 w-full max-w-md aspect-square bg-gradient-to-b from-[#001AFF] via-[#05082b] to-[#02062b] rounded-full opacity-70">
+              <div className="absolute inset-0 bg-gradient-to-b from-[#0019FF] to-transparent rounded-full opacity-100">
+                {/* Main image with blend mode */}
 
-              <Image
-                src="/ellipse.png"
-                alt="3D Sphere"
-                fill
-                className="object-contain opacity-100 p-0"
-              />
+                <Image
+                  src="/ellipse.png"
+                  alt="3D Sphere"
+                  fill
+                  className="object-contain mix-blend-multiply opacity-100 bg-clip-content p-0"
+                />
+              </div>
 
               {/* Additional gradient overlay on top */}
-              {/* <div className="absolute inset-2 bg-gradient-to-b from-blue-500 via-blue-500/90 to-blue-950 rounded-full opacity-45 "></div> */}
             </div>
 
             {/* Buttons positioned below the sphere */}
