@@ -411,15 +411,17 @@ export function Services() {
             viewport={{ once: true }}
             className="flex-1 flex items-center justify-center relative min-h-[340px]"
           >
-            <Image
-              src="/ellipse-outer.png"
-              alt="3D Sphere"
-              fill
-              className="object-cover bg-"
-            />
-            <div className="relative inset-0 p-16 w-full max-w-md aspect-square bg-gradient-to-b from-[#001AFF] via-[#05082b] to-[#02062b] rounded-full opacity-70">
+            <div className="relative inset-0 p-0 w-full max-w-md aspect-square rounded-full opacity-100">
+              <Image
+                src="/sphere2.png"
+                alt="3D Sphere"
+                fill
+                className="object-cover bg-"
+              />
+            </div>
+            {/* <div className="relative inset-0 p-16 w-full max-w-md aspect-square bg-gradient-to-b from-[#001AFF] via-[#05082b] to-[#02062b] rounded-full opacity-70">
               <div className="absolute inset-0 bg-gradient-to-b from-[#0019FF] to-transparent rounded-full opacity-100">
-                {/* Main image with blend mode */}
+                
 
                 <Image
                   src="/ellipse.png"
@@ -427,10 +429,10 @@ export function Services() {
                   fill
                   className="object-contain mix-blend-multiply opacity-100 bg-clip-content p-0"
                 />
-              </div>
+              </div> */}
 
-              {/* Additional gradient overlay on top */}
-            </div>
+            {/* Additional gradient overlay on top */}
+            {/* </div> */}
 
             {/* Buttons positioned below the sphere */}
             <motion.div

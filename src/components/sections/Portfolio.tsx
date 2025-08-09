@@ -52,26 +52,32 @@ export function Portfolio() {
     <section id="portfolio" className="py-16 bg-gray-900 relative">
       <div className="container mx-auto px-4">
         {/* Absolutely positioned h2 on top of second project */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="absolute text-4xl font-bold text-white mb-2 left-1/2 top-8 z-10"
-        >
-          Some of the Things We&apos;ve Built
-        </motion.h2>
+        <div className="grid grid-cols-3 gap-8">
+          <div className="col-span-1"></div>
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+            className="relative top-16 text-end text-4xl font-bold text-white z-10 ml-auto w-full col-span-2"
+          >
+            Some of the Things We&apos;ve Built
+          </motion.h2>
+        </div>
 
         {/* Absolutely positioned p on top of third project */}
-        <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          viewport={{ once: true }}
-          className="absolute text-lg text-gray-300 right-38 lg:right-128 top-24 z-10"
-        >
-          Portfolio Section
-        </motion.p>
+        <div className="grid grid-cols-3 gap-8">
+          <div className="col-span-2"></div>
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="relative top-20 text-end text-lg text-gray-300  z-10"
+          >
+            Portfolio Section
+          </motion.p>
+        </div>
 
         <motion.div
           variants={containerVariants}

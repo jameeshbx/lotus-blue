@@ -49,7 +49,7 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-3"
           >
-            <Image src="/logo.png" alt="Logo" width={100} height={100} />
+            <Image src="/logo.png" alt="Logo" width={120} height={120} />
           </motion.div>
 
           {/* Desktop Navigation */}

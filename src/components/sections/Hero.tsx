@@ -163,7 +163,7 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="space-y-6 z-10"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-blue-400 mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
                 UPSKILL WITH THE TEAM
               </h2>
               <p className="text-gray-400 text-lg leading-relaxed">
