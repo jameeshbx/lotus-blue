@@ -160,6 +160,8 @@
   }
   body {
     @apply bg-background text-foreground;
+    /* Prevent horizontal scroll on mobile */
+    overflow-x: hidden;
   }
   .font-playfair {
     font-family: var(--font-playfair-display);
@@ -209,6 +211,25 @@
     .font-Inter{
       font-family: 'Inter', sans-serif;
     }
+
+    /* Mobile-specific improvements */
+    @media (max-width: 640px) {
+      /* Improve touch targets */
+      button, a, input, textarea, select {
+        min-height: 44px;
+        min-width: 44px;
+      }
+      
+      /* Better text readability on mobile */
+      p, span, div {
+        line-height: 1.6;
+      }
+      
+      /* Improve form elements on mobile */
+      input, textarea, select {
+        font-size: 16px; /* Prevents zoom on iOS */
+      }
+    }
 }
 
 /* Add Tailwind utilities for the new deep-blue color */
@@ -223,8 +244,27 @@
     border-color: var(--deep-blue);
   }
  
+  /* Mobile-responsive utilities */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base lg:text-lg;
+  }
+  
+  .mobile-heading {
+    @apply text-2xl sm:text-3xl md:text-4xl lg:text-5xl;
+  }
+  
+  .mobile-spacing {
+    @apply space-y-4 sm:space-y-6 lg:space-y-8;
+  }
+  
+  .mobile-padding {
+    @apply p-4 sm:p-6 lg:p-8;
+  }
 }
-
 
 /* Custom scrollbar */
 ::-webkit-scrollbar {
@@ -269,4 +309,36 @@ html {
 
 .animate-fade-in-up {
   animation: fadeInUp 0.6s ease-out;
+}
+
+/* Mobile-specific animations */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-slide-in {
+  animation: slideInFromBottom 0.5s ease-out;
+}
+
+/* Improve mobile performance */
+@media (max-width: 768px) {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Reduce motion for users who prefer it */
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

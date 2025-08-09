@@ -65,23 +65,23 @@ export function Services() {
         ></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-4 relative z-10 mt-16">
         {/* Top: What makes us different? */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="inline-block mb-16"
+          className="mb-16"
         >
           {/* Logo and Headline */}
-          <div className="inline-block align-top mr-10">
+          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between mb-8 lg:mb-0">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.2, duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex items-center gap-4"
+              className="flex flex-col lg:flex-row items-center gap-4 mb-6 lg:mb-0 lg:mr-10"
             >
               <Image
                 src="/blue-logo.png"
@@ -89,29 +89,29 @@ export function Services() {
                 width={130}
                 height={130}
               />
-              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight">
-                What makes <br className="hidden md:block" /> us different?
+              <h2 className="text-3xl md:text-4xl font-bold text-white leading-tight text-center lg:text-left">
+                What makes <br className="hidden lg:block" /> us different?
               </h2>
             </motion.div>
+            {/* Description */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ delay: 0.4, duration: 0.6 }}
+              viewport={{ once: true }}
+              className="w-full lg:max-w-2xl"
+            >
+              <h3 className="text-white font-bold text-lg mb-2 text-center lg:text-left">
+                More Than Developers. We&apos;re Your Tech Partners.
+              </h3>
+              <p className="text-gray-300 text-base text-center lg:text-left">
+                Lotus is a modern development team delivering smart digital
+                solutions that help businesses grow. We don&apos;t offer
+                one-size-fits-all websites—we engineer custom tools, platforms,
+                and products, exactly how you need them.
+              </p>
+            </motion.div>
           </div>
-          {/* Description */}
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.4, duration: 0.6 }}
-            viewport={{ once: true }}
-            className="inline-block align-top max-w-2xl"
-          >
-            <h3 className="text-white font-bold text-lg mb-2">
-              More Than Developers. We&apos;re Your Tech Partners.
-            </h3>
-            <p className="text-gray-300 text-base">
-              Lotus is a modern development team delivering smart digital
-              solutions that help businesses grow. We don&apos;t offer
-              one-size-fits-all websites—we engineer custom tools, platforms,
-              and products, exactly how you need them.
-            </p>
-          </motion.div>
         </motion.div>
 
         {/* Feature Grid */}
@@ -209,7 +209,7 @@ export function Services() {
             {/* Bottom row - 2 items centered */}
             <motion.div
               variants={itemVariants}
-              className="flex items-center gap-4 md:col-span-3 md:justify-center"
+              className="flex flex-col md:flex-row  gap-4 md:col-span-3 md:justify-center"
             >
               <div className="flex items-center gap-4">
                 <span className="bg-gray-800 p-3 rounded-lg text-white">
@@ -275,12 +275,12 @@ export function Services() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 min-w-[320px]"
+            className="flex-1 min-w-[320px]  w-full"
           >
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-2 text-center lg:text-left">
               What we do ?
             </h2>
-            <p className="text-gray-300 mb-8 max-w-lg">
+            <p className="text-gray-300 mb-8 w-full lg:max-w-lg text-center lg:text-left">
               We build software that adapts to your business—not the other way
               around.
             </p>
@@ -293,7 +293,7 @@ export function Services() {
             >
               <motion.div
                 variants={featureVariants}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 w-full justify-center lg:justify-start"
               >
                 <span className="bg-gray-800 p-3 rounded-lg text-white">
                   <svg
@@ -324,7 +324,7 @@ export function Services() {
 
               <motion.div
                 variants={featureVariants}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 w-full justify-center lg:justify-start"
               >
                 <span className="bg-gray-800 p-3 rounded-lg text-white">
                   <svg
@@ -353,7 +353,7 @@ export function Services() {
               </motion.div>
               <motion.div
                 variants={featureVariants}
-                className="flex items-start gap-4"
+                className="flex items-start gap-4 w-full justify-center lg:justify-start"
               >
                 <span className="bg-gray-800 p-3 rounded-lg text-white">
                   <svg
@@ -386,11 +386,13 @@ export function Services() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.6 }}
               viewport={{ once: true }}
-              className="flex flex-col items-start gap-8 mt-8"
+              className="flex flex-col lg:items-start gap-8 mt-8 w-full "
             >
-              <span className="text-gray-400 text-sm">Trusted by</span>
+              <span className="text-gray-400 text-sm text-center lg:text-left">
+                Trusted by
+              </span>
 
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 justify-center lg:justify-start">
                 <Image
                   src="/enyata-logo.png"
                   alt="Enyata"
@@ -409,7 +411,7 @@ export function Services() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             viewport={{ once: true }}
-            className="flex-1 flex items-center justify-center relative min-h-[340px]"
+            className="flex-1 hidden lg:flex items-center justify-center relative min-h-[340px]"
           >
             <div className="relative inset-0 p-0 w-full max-w-md aspect-square rounded-full opacity-100">
               <Image

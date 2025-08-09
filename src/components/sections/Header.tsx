@@ -35,7 +35,7 @@ export function Header() {
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
         isScrolled
           ? "bg-black/95 backdrop-blur-md border-b border-gray-800 shadow-lg"
-          : "bg-transparent"
+          : "bg-transparent  mx-2 lg:mx-0"
       }`}
     >
       <div
@@ -49,7 +49,7 @@ export function Header() {
             whileHover={{ scale: 1.05 }}
             className="flex items-center space-x-3"
           >
-            <Image src="/logo.png" alt="Logo" width={120} height={120} />
+            <Image src="/logo.png" alt="Logo" width={160} height={120} />
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -66,7 +66,7 @@ export function Header() {
             ))}
             <Button
               variant="outline"
-              className="border-gray-600 bg-[#6B6B6B] text-white hover:bg-gray-800 hover:border-gray-500 px-6 py-3 text-lg font-medium"
+              className="border-gray-600 bg-[#6B6B6B] text-white hover:bg-gray-800 hover:border-gray-500 px-6 py-3 text-lg font-medium mr-2"
             >
               <User className="w-5 h-5 mr-3" />
               Connect With Us
@@ -96,7 +96,7 @@ export function Header() {
                   key={item.name}
                   href={item.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="text-gray-300 hover:text-white transition-colors font-medium text-lg"
+                  className="text-gray-300 hover:text-white transition-colors font-medium text-lg text-center md:text-left cursor-pointer"
                 >
                   {item.name}
                 </a>

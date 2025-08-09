@@ -12,7 +12,7 @@ export function Contact() {
     email: "",
     phone: "",
     description: "",
-    serviceLookingFor: "upskill",
+    serviceLookingFor: "project-development",
     serviceNeeded: "custom-web-development",
   });
 
@@ -42,7 +42,7 @@ export function Contact() {
           email: "",
           phone: "",
           description: "",
-          serviceLookingFor: "upskill",
+          serviceLookingFor: "project-development",
           serviceNeeded: "custom-web-development",
         });
       } else {
@@ -75,26 +75,25 @@ export function Contact() {
   return (
     <section
       id="contact"
-      className="py-20"
+      className="py-12 sm:py-16 lg:py-20"
       style={{
         background: "linear-gradient(to bottom, black 70%,  #1E2939 30%)",
       }}
     >
-      <div className="container mx-auto px-4 bg-blue-400 rounded-lg p-16 z-10">
+      <div className="container mx-16 px-4 bg-blue-400 rounded-lg p-6 sm:p-8 lg:p-16 z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-center mb-16"
+          className="text-center mb-12 sm:mb-16"
         >
-          <h2 className="text-4xl font-bold text-white mb-4">
+          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4">
             Got an Idea? Let&apos;s Build It Together.
           </h2>
-          <p className="text-xl text-white max-w-3xl mx-auto">
+          <p className="text-base sm:text-lg lg:text-xl text-white max-w-3xl mx-auto">
             Whether you&apos;re planning your next startup, improving an
-            existing product, need an expert team, or want to level up,
-            we&apos;re ready.
+            existing product, or need an expert team, we&apos;re ready.
           </p>
         </motion.div>
 
@@ -105,13 +104,13 @@ export function Contact() {
           viewport={{ once: true }}
           className="max-w-4xl mx-auto"
         >
-          <form onSubmit={handleSubmit} className="space-y-8">
-            <div className="grid lg:grid-cols-2 gap-8">
+          <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
               {/* Left Column */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Name Input */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-2 uppercase">
                     Hello, what&apos;s your name?
                   </label>
                   <Input
@@ -121,13 +120,13 @@ export function Contact() {
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="Enter your name"
-                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg text-sm sm:text-base"
                   />
                 </div>
 
                 {/* Email Input */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-2 uppercase">
                     What is your email?
                   </label>
                   <Input
@@ -137,7 +136,7 @@ export function Contact() {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="name@example.com"
-                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg text-sm sm:text-base"
                   />
                 </div>
 
@@ -148,21 +147,21 @@ export function Contact() {
                     required
                     value={formData.description}
                     onChange={handleChange}
-                    placeholder="Enter the description"
+                    placeholder="Enter the message here"
                     rows={4}
-                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg resize-none"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg resize-none text-sm sm:text-base"
                   />
                 </div>
               </div>
 
               {/* Right Column */}
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {/* Service Looking For */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3 uppercase">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-3 uppercase">
                     Service you are looking for?
                   </label>
-                  <div className="flex gap-4">
+                  <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
@@ -176,27 +175,31 @@ export function Contact() {
                         }
                         className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                      <span className="text-white">Project development</span>
+                      <span className="text-white text-sm sm:text-base">
+                        Project development
+                      </span>
                     </label>
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
                         name="serviceLookingFor"
-                        value="upskill"
-                        checked={formData.serviceLookingFor === "upskill"}
+                        value="build-team"
+                        checked={formData.serviceLookingFor === "build-team"}
                         onChange={(e) =>
                           handleRadioChange("serviceLookingFor", e.target.value)
                         }
                         className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                      <span className="text-white">Upskill with us.</span>
+                      <span className="text-white text-sm sm:text-base">
+                        Build a Team
+                      </span>
                     </label>
                   </div>
                 </div>
 
                 {/* Phone Number */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-2 uppercase">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-2 uppercase">
                     What&apos;s your number?
                   </label>
                   <Input
@@ -205,17 +208,17 @@ export function Contact() {
                     required
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="+00 123456789"
-                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg"
+                    placeholder="+00 Country Code"
+                    className="bg-white text-gray-900 placeholder-gray-500 border-0 rounded-lg text-sm sm:text-base"
                   />
                 </div>
 
                 {/* Service Needed */}
                 <div>
-                  <label className="block text-sm font-medium text-white mb-3 uppercase">
+                  <label className="block text-xs sm:text-sm font-medium text-white mb-3 uppercase">
                     What service do you need?
                   </label>
-                  <div className="space-y-3">
+                  <div className="space-y-2 sm:space-y-3">
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
                         type="radio"
@@ -229,7 +232,9 @@ export function Contact() {
                         }
                         className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                      <span className="text-white">Custom Web Development</span>
+                      <span className="text-white text-sm sm:text-base">
+                        Custom Web Development
+                      </span>
                     </label>
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
@@ -242,20 +247,9 @@ export function Contact() {
                         }
                         className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                      <span className="text-white">Hybrid App Development</span>
-                    </label>
-                    <label className="flex items-center space-x-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="serviceNeeded"
-                        value="qa-testing"
-                        checked={formData.serviceNeeded === "qa-testing"}
-                        onChange={(e) =>
-                          handleRadioChange("serviceNeeded", e.target.value)
-                        }
-                        className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
-                      />
-                      <span className="text-white">QA Testing</span>
+                      <span className="text-white text-sm sm:text-base">
+                        QA Testing
+                      </span>
                     </label>
                     <label className="flex items-center space-x-2 cursor-pointer">
                       <input
@@ -268,7 +262,9 @@ export function Contact() {
                         }
                         className="w-4 h-4 text-blue-600 bg-white border-gray-300 focus:ring-blue-500"
                       />
-                      <span className="text-white">UI UX Designing</span>
+                      <span className="text-white text-sm sm:text-base">
+                        UI/UX Designing
+                      </span>
                     </label>
                   </div>
                 </div>
@@ -280,9 +276,9 @@ export function Contact() {
               <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="bg-black text-white hover:bg-gray-800 px-8 py-3 rounded-lg font-medium uppercase"
+                className="bg-black text-white hover:bg-gray-800 px-6 sm:px-8 py-3 sm:py-4 rounded-lg font-medium uppercase text-sm sm:text-base"
               >
-                {isSubmitting ? "Sending..." : "Let's Talk"}
+                {isSubmitting ? "Sending..." : "GET FREE QUOTE"}
               </Button>
             </div>
 
@@ -291,7 +287,7 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center text-green-400"
+                className="text-center text-green-400 text-sm sm:text-base"
               >
                 Thank you! Your message has been sent successfully.
               </motion.div>
@@ -301,7 +297,7 @@ export function Contact() {
               <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-center text-red-400"
+                className="text-center text-red-400 text-sm sm:text-base"
               >
                 Sorry, there was an error sending your message. Please try
                 again.
@@ -312,7 +308,7 @@ export function Contact() {
             <div className="text-center">
               <a
                 href="#"
-                className="text-gray-400 hover:text-white transition-colors text-sm inline-flex items-center"
+                className="text-white hover:text-white transition-colors text-xs sm:text-sm inline-flex items-center"
               >
                 → I want to schedule a meeting
               </a>

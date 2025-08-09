@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Clock, Diamond } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export function Hero() {
   return (
@@ -84,30 +85,32 @@ export function Hero() {
           </div>
 
           {/* Main Content Section */}
-          <div className="grid lg:grid-cols-3 gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 items-center justify-center">
             {/* Left Content - Custom Tech Solutions */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="space-y-6 z-10"
+              className="space-y-6 z-10 "
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 text-center lg:text-left">
                 CUSTOM TECH SOLUTIONS
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-400 text-lg leading-relaxed text-center lg:text-left">
                 Tailored platforms and applications built from scratch.
               </p>
-              <a
-                href="#contact"
-                className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors"
-              >
-                Let&apos;s Build Together →
-              </a>
+              <div className="flex justify-center lg:justify-start">
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors text-center lg:text-left"
+                >
+                  Let&apos;s Build Together →
+                </Link>
+              </div>
 
               {/* Features */}
               <div className="space-y-4 mt-8">
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 justify-center lg:justify-start">
                   <Diamond className="w-5 h-5 text-pink-400 mt-1 flex-shrink-0" />
                   <div>
                     <div className="text-white font-semibold">50+</div>
@@ -116,7 +119,7 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 justify-center lg:justify-start">
                   <Diamond className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                   <div>
                     <div className="text-white font-semibold">Custom-First</div>
@@ -133,7 +136,7 @@ export function Hero() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.8, duration: 1 }}
-              className="flex justify-center items-center w-full h-full relative"
+              className="hidden lg:flex justify-center items-center w-full h-full relative"
             >
               <div className="relative w-[180%] aspect-square -mx-[40%]">
                 {/* Animated Sphere */}
@@ -163,22 +166,24 @@ export function Hero() {
               transition={{ delay: 0.6, duration: 0.8 }}
               className="space-y-6 z-10"
             >
-              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4">
+              <h2 className="text-3xl lg:text-4xl font-bold text-white mb-4 text-center lg:text-left">
                 UPSKILL WITH THE TEAM
               </h2>
-              <p className="text-gray-400 text-lg leading-relaxed">
+              <p className="text-gray-400 text-lg leading-relaxed text-center lg:text-left">
                 Courses on MERN Stack, QA Testing, and UI/UX Design.
               </p>
-              <a
-                href="#learnings"
-                className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors"
-              >
-                Ready to Upskill? →
-              </a>
+              <div className="flex justify-center lg:justify-start">
+                <Link
+                  href="#learnings"
+                  className="inline-flex items-center text-blue-400 hover:text-blue-300 underline underline-offset-4 transition-colors text-center lg:text-left"
+                >
+                  Ready to Upskill? →
+                </Link>
+              </div>
 
               {/* Features */}
               <div className="space-y-4 mt-8">
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 justify-center lg:justify-start">
                   <Diamond className="w-5 h-5 text-purple-400 mt-1 flex-shrink-0" />
                   <div>
                     <div className="text-white font-semibold">90%</div>
@@ -187,7 +192,7 @@ export function Hero() {
                     </div>
                   </div>
                 </div>
-                <div className="flex items-start space-x-3">
+                <div className="flex items-start space-x-3 justify-center lg:justify-start">
                   <Diamond className="w-5 h-5 text-green-400 mt-1 flex-shrink-0" />
                   <div>
                     <div className="text-white font-semibold">Job Oriented</div>
